@@ -12,7 +12,7 @@ def test_fill_page(page, run):
     PiterOnline.expect_tariffs_heading_visible()
 
 
-@pytest.mark.parametrize("run", range(1))
+@pytest.mark.parametrize("run", range(5))
 def test_change_region(page, run):
     PiterOnline = MainPage(page)
     PiterOnline.open_main_site()
