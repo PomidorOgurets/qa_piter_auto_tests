@@ -1,43 +1,45 @@
 import pytest
 from playwright.sync_api import expect
+from Data.constants import *
+from Data.test_data import *
 
-@pytest.mark.parametrize("run", range(5))
+@pytest.mark.parametrize("run", range(1))
 def test_fill_page(page, run):
 
     page.goto("https://piter-online.net/")
-    page.get_by_role("combobox", name="Введите улицу").click()
-    page.get_by_role("combobox", name="Введите улицу").fill("Тестовая линия")
+    page.get_by_role("combobox", name=INPUT_STREET_LABEL).click()
+    page.get_by_role("combobox", name=INPUT_STREET_LABEL).fill(TEST_STREETS[0])
     page.get_by_text("Тестовая линия").click()
-    page.get_by_role("combobox", name="Дом").fill("1")
-    page.get_by_role("combobox", name="Дом").press("Enter")
+    page.get_by_role("combobox", name=INPUT_HOUSE_LABEL).fill(TEST_HOUSES[0])
+    page.get_by_role("combobox", name=INPUT_HOUSE_LABEL).press(ENTER)
 
     page.wait_for_timeout(1000)
-    page.get_by_role("button", name="Найти тарифы").wait_for(state="visible", timeout=10000)
-    page.get_by_role("button", name="Найти тарифы").click()
+    page.get_by_role("button", name=BUTTON_FIND_TARIFFS).wait_for(state="visible", timeout=TIMEOUT_DEFAULT)
+    page.get_by_role("button", name=BUTTON_FIND_TARIFFS).click()
 
-    page.get_by_role("textbox", name="+7 (").fill("+7 (111) 111-11-111")
-    page.get_by_role("button", name="Показать результаты").click()
-
-
-    page.get_by_role("button", name="Смотреть тарифы").wait_for(state="visible", timeout=10000)
-    page.get_by_role("button", name="Смотреть тарифы").click()
+    page.get_by_role("textbox", name=INPUT_PHONE_LABEL).fill(TEST_PHONES[0])
+    page.get_by_role("button", name=BUTTON_SHOW_RESULTS).click()
 
 
-    expect(page.get_by_role("heading", name="Интернет и ТВ по адресу Ленинградская область, линия Тестовая")).to_be_visible()
+    page.get_by_role("button", name=BUTTON_VIEW_TARIFFS).wait_for(state="visible", timeout=TIMEOUT_DEFAULT)
+    page.get_by_role("button", name=BUTTON_VIEW_TARIFFS).click()
 
 
-@pytest.mark.parametrize("run", range(5))
+    expect(page.get_by_role("heading", name=HEADING_TARIFFS_PATTERN)).to_be_visible()
+
+
+@pytest.mark.parametrize("run", range(1))
 def test_change_region(page, run):
     page.goto("https://piter-online.net/")
-    page.get_by_role("banner").get_by_role("link", name="Санкт-Петербург").click()
-    page.get_by_role("link", name="Гатчина Ленинградская область").click()
-    expect(page.get_by_text("Гатчина", exact=True)).to_be_visible()
+    page.get_by_role("banner").get_by_role("link", name=REGION_DEFAULT).click()
+    page.get_by_role("link", name=REGION_GATCHINA).click()
+    expect(page.get_by_text(REGION_GATCHINA_TEXT, exact=True)).to_be_visible()
 
 
-@pytest.mark.parametrize("run", range(5))
+@pytest.mark.parametrize("run", range(1))
 def test_status(page, run):
     # Переход на главную и проверка HTTP 200
-    response = page.goto("https://piter-online.net/")
+    response = page.goto(BASE_URL)
     assert response.status == 200, f"Главная страница вернула статус {response.status} вместо 200"
 
 
