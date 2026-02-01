@@ -3,6 +3,9 @@
 # ========== URL ==========
 BASE_URL = "https://piter-online.net/"
 
+# ========== Клавиши ==========
+ENTER = "Enter"
+
 # ========== Текст кнопок и элементов ==========
 BUTTON_FIND_TARIFFS = "Найти тарифы"
 BUTTON_SHOW_RESULTS = "Показать результаты"
