@@ -9,13 +9,13 @@ def test_fill_page(page, run):
     PiterOnline = MainPage(page)
     PiterOnline.open_main_site()
     PiterOnline.fill_complete_form(TEST_STREETS[0], TEST_HOUSES[0], TEST_PHONES[0])
-
-    expect(page.get_by_role("heading", name=HEADING_TARIFFS_PATTERN)).to_be_visible()
+    PiterOnline.expect_tariffs_heading_visible()
 
 
 @pytest.mark.parametrize("run", range(5))
 def test_change_region(page, run):
-    page.goto("https://piter-online.net/")
+    PiterOnline = MainPage(page)
+    PiterOnline.open_main_site()
     page.get_by_role("banner").get_by_role("link", name=REGION_DEFAULT).click()
     page.get_by_role("link", name=REGION_GATCHINA).click()
     expect(page.get_by_text(REGION_GATCHINA_TEXT, exact=True)).to_be_visible()

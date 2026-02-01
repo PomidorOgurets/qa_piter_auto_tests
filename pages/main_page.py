@@ -78,10 +78,10 @@ class MainPage:
         return self
 
     # ========== Методы проверок (assertions) ==========
-    def expect_tariffs_heading_visible(self, street_name: str):
+    def expect_tariffs_heading_visible(self):
         """Проверить видимость заголовка с тарифами"""
         heading = self.page.get_by_role("heading",
-                                        name=HEADING_TARIFFS_PATTERN.format(street_name=street_name))
+                                        name=HEADING_TARIFFS_PATTERN)
         expect(heading).to_be_visible()
         return self
 
