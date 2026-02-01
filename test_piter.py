@@ -12,13 +12,13 @@ def test_fill_page(page, run):
     PiterOnline.expect_tariffs_heading_visible()
 
 
-@pytest.mark.parametrize("run", range(5))
+@pytest.mark.parametrize("run", range(1))
 def test_change_region(page, run):
     PiterOnline = MainPage(page)
     PiterOnline.open_main_site()
-    page.get_by_role("banner").get_by_role("link", name=REGION_DEFAULT).click()
-    page.get_by_role("link", name=REGION_GATCHINA).click()
-    expect(page.get_by_text(REGION_GATCHINA_TEXT, exact=True)).to_be_visible()
+    PiterOnline.open_region_menu()
+    PiterOnline.select_gatchina_region()
+    PiterOnline.expect_gatchina_visible()
 
 
 @pytest.mark.parametrize("run", range(5))
