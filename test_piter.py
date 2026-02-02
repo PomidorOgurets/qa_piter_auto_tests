@@ -45,6 +45,8 @@ def test_change_region(page, run):
 
 # Переход на главную и проверка статуса HTTP 200
 @pytest.mark.parametrize("run", range(5))
+@allure.title("HTTP статус главной страницы")
+@allure.description("Проверка доступности главной страницы (HTTP 200)")
 def test_status(page, run):
     response = page.goto(BASE_URL)
     assert response.status == 200, f"Главная страница вернула статус {response.status} вместо 200"
