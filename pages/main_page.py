@@ -28,8 +28,7 @@ class MainPage:
     def fill_street(self, street_name: str):
         self.street_input.click()
         self.street_input.fill(street_name)
-        self.page.wait_for_timeout(2000)
-        self.page.keyboard.press(ENTER)
+        self.page.get_by_text("Ленинградская область, Хвойный").click()
         return self
 
     # Заполнить поле дома
