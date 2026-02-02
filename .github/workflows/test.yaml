@@ -38,12 +38,12 @@ jobs:
           path: gh-pages
 
       - name: Allure Report action from repo
+        uses: simple-elf/allure-report-action@master
         if: always()
-        uses: ./
         with:
           allure_results: allure-results
-          allure_history: allure-history
-          keep_reports: 20
+          report_path: allure-report
+          keep_history: true
 
       - name: Deploy report to Github Pages
         if: always()
