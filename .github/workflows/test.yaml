@@ -13,6 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python 3.x
+        if: always()
         uses: actions/setup-python@v2
         with:
           python-version: '3.x'
@@ -29,6 +30,7 @@ jobs:
           pytest --alluredir=allure-results
 
       - name: Get Allure history
+        if: always()
         uses: actions/checkout@v4
         continue-on-error: true
         with:
@@ -36,6 +38,7 @@ jobs:
           path: gh-pages
 
       - name: Allure Report action from repo
+        if: always()
         uses: ./
         with:
           allure_results: allure-results
@@ -43,6 +46,7 @@ jobs:
           keep_reports: 20
 
       - name: Deploy report to Github Pages
+        if: always()
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
