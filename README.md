@@ -15,6 +15,7 @@
 - [x] Проект написан на Playwright - фреймворке для тестирования современных веб‑приложений.
 - [x] Возможность запуска как всех тестов сразу, так и отдельных
 - [x] `Page Object` проектирование
+- [x] Автотесты оформлены в Allure Report
 
 <a id="tools"></a>
 ## Технологии и инструменты
@@ -25,6 +26,7 @@
 <a href="https://www.jetbrains.com/pycharm/"><img alt="Pycharm" height="50" src="logo_image/pycharm-original.png" width="50"/></a>  
 <a href="https://docs.pytest.org/en/stable/index.html#"><img alt="Pytest" height="50" src="logo_image/pytest-original.png" width="50"/></a>
 <a href="https://playwright.dev/python/"><img alt="Playwright" height="50" src="logo_image/playwright.png" width="50"/></a>
+<a href="https://allurereport.org/"><img alt="AllureReport" height="50" src="logo_image/AllureReports.png" width="50"/></a>
 </div>
 
 Автотесты в этом проекте написаны на Python с использованием фреймворка [Playwright](https://playwright.dev/python/).\
@@ -32,7 +34,8 @@
 <code>Python</code> — основной язык программирования для автотестов.\
 <code>PyCharm</code> — IDE для разработки и отладки тестов.\
 <code>pytest</code> — фреймворк для запуска и организации тестов.\
-<code>Playwright</code> — для кросс-браузерного тестирования веб-приложений.
+<code>Playwright</code> — для кросс-браузерного тестирования веб-приложений.\
+<code>AllureReport</code> — для создания отчетов по тестированию.
 
 <a id="cases"></a>
 ## Реализованные проверки
