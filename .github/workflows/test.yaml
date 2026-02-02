@@ -44,8 +44,9 @@ jobs:
         if: always()
         shell: pwsh
         run: |
-          npm install -g @allure/report@latest
-          allure generate allure-results -o allure-report --clean
+          npm install -g allure-commandline@latest
+          Start-Sleep -Seconds 10
+          npx allure generate allure-results -o allure-report --clean
 
       - name: Deploy report to Github Pages
         if: always()
