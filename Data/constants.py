@@ -5,6 +5,7 @@ BASE_URL = "https://piter-online.net/"
 
 # Клавиши
 ENTER = "Enter"
+BACKSPACE = "Backspace"
 
 # Текст кнопок и элементов
 BUTTON_FIND_TARIFFS = "Найти тарифы"
