@@ -28,6 +28,8 @@ class MainPage:
     def fill_street(self, street_name: str):
         self.street_input.click()
         self.street_input.fill(street_name)
+        locator = self.page.get_by_text(street_name, exact=True)
+        expect(locator).to_be_visible(timeout=10000)
         self.page.get_by_text(street_name).click()
         return self
 
