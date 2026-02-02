@@ -9,28 +9,28 @@ on:
 jobs:
   test:
     name: Test
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     permissions:
       contents: write
       pages: write
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Set up Python 3.x
         if: always()
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: '3.x'
-      - name: Install dependencies
+      - name: Install python dependencies
         run: |
           pip install -r requirements.txt
 
       - name: Install Playwright browsers
         run: |
-          python -m playwright install --with-deps
+          python -m playwright install
 
-      - name: Install dependencies
+      - name: Run tests
         run: |
-          pytest --alluredir=allure-results
+          pytest --alluredir=allure-results -v
 
       - name: Get Allure history
         if: always()
@@ -40,14 +40,12 @@ jobs:
           ref: gh-pages
           path: gh-pages
 
-      - name: Allure Report action from repo
-        uses: simple-elf/allure-report-action@master
+      - name: Generate Allure Report
         if: always()
-        with:
-          allure_results: allure-results
-          gh_pages: gh-pages
-          allure_report: allure-report
-          allure_history: allure-history
+        shell: pwsh
+        run: |
+          npm install -g @allure/report@latest
+          allure generate allure-results -o allure-report --clean
 
       - name: Deploy report to Github Pages
         if: always()
