@@ -3,6 +3,8 @@ from Data.constants import *
 from Data.test_data import *
 from pages.main_page import MainPage
 
+
+# Автоматизация подачи заявки
 @pytest.mark.parametrize("run", range(5))
 def test_fill_page(page, run):
     PiterOnline = MainPage(page)
@@ -11,6 +13,7 @@ def test_fill_page(page, run):
     PiterOnline.expect_tariffs_heading_visible()
 
 
+# Смена региона и проверка изменения страницы
 @pytest.mark.parametrize("run", range(5))
 def test_change_region(page, run):
     PiterOnline = MainPage(page)
@@ -20,9 +23,9 @@ def test_change_region(page, run):
     PiterOnline.expect_gatchina_visible()
 
 
+# Переход на главную и проверка статуса HTTP 200
 @pytest.mark.parametrize("run", range(5))
 def test_status(page, run):
-    # Переход на главную и проверка HTTP 200
     response = page.goto(BASE_URL)
     assert response.status == 200, f"Главная страница вернула статус {response.status} вместо 200"
 
