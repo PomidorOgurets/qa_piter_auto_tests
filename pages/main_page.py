@@ -28,7 +28,7 @@ class MainPage:
     def fill_street(self, street_name: str):
         self.street_input.click()
         self.street_input.fill(street_name)
-        self.street_input.press(BACKSPACE)
+        self.page.wait_for_timeout(4000)
         self.page.get_by_text(street_name).click()
         return self
 
