@@ -26,12 +26,21 @@ def test_fill_page(page, run):
 
 # Смена региона и проверка изменения страницы
 @pytest.mark.parametrize("run", range(5))
+@allure.title("Смена региона на Гатчину")
+@allure.description("Открытие меню регионов → выбор Гатчины → проверка текста")
 def test_change_region(page, run):
-    PiterOnline = MainPage(page)
-    PiterOnline.open_main_site()
-    PiterOnline.open_region_menu()
-    PiterOnline.select_gatchina_region()
-    PiterOnline.expect_gatchina_visible()
+    with allure.step(f"Открытие главной страницы - {BASE_URL}"):
+        PiterOnline = MainPage(page)
+        PiterOnline.open_main_site()
+
+    with allure.step("Открытие меню выбора региона"):
+        PiterOnline.open_region_menu()
+
+    with allure.step("Выбор Гатчины как региона"):
+        PiterOnline.select_gatchina_region()
+
+    with allure.step("Проверка, что регион поменялся на Гатчину"):
+        PiterOnline.expect_gatchina_visible()
 
 
 # Переход на главную и проверка статуса HTTP 200
