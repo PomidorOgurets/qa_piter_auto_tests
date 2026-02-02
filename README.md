@@ -6,7 +6,7 @@
 * <a href="#tools">Технологии и инструменты</a>
 * <a href="#cases">Реализованные проверки</a>
 * <a href="#requirements">Установка зависимостей</a>
-* <a href="#Allure">Отчет Allure</a>
+* <a href="#allure">Отчет Allure</a>
 * <a href="#console">Запуск тестов из терминала</a>
 
 <a id="annotation"></a>
@@ -57,11 +57,11 @@
 ### Стабильность выполнения
 :heavy_check_mark: Автотесты выполняются 5 раз подряд и не падают
 
-<a id="requirements"></a>
-
+<a id="allure"></a>
 ## Отчет Allure
 <img alt="Отчет Allure" src="logo_image/AllureResults.png"/>
 
+<a id="requirements"></a>
 ## Установка зависимостей
 После клонирования репозитория необходимо:
 * Находясь в нужной директории (qa_piter_auto_tests) запустить командую строку - cmd
