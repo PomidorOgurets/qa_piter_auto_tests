@@ -9,7 +9,7 @@ on:
 jobs:
   test:
     name: Test
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python 3.x
@@ -22,7 +22,7 @@ jobs:
 
       - name: Install Playwright browsers
         run: |
-          python -m playwright install --with-deps
+          python -m playwright install
 
       - name: Install dependencies
         run: |
