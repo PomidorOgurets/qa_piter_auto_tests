@@ -45,8 +45,9 @@ jobs:
         if: always()
         with:
           allure_results: allure-results
-          report_path: allure-report
-          keep_history: true
+          gh_pages: gh-pages
+          allure_report: allure-report
+          allure_history: allure-history
 
       - name: Deploy report to Github Pages
         if: always()
