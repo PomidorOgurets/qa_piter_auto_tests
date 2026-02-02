@@ -7,7 +7,7 @@ from pages.main_page import MainPage
 
 
 # Автоматизация подачи заявки
-@pytest.mark.parametrize("run", range(1))
+@pytest.mark.parametrize("run", range(5))
 @allure.title("Подача заявки")
 @allure.description("Заполнение формы адрес+телефон, переход к тарифам")
 def test_fill_page(page, run):
@@ -25,7 +25,7 @@ def test_fill_page(page, run):
 
 
 # Смена региона и проверка изменения страницы
-@pytest.mark.parametrize("run", range(1))
+@pytest.mark.parametrize("run", range(5))
 @allure.title("Смена региона на Гатчину")
 @allure.description("Открытие меню регионов → выбор Гатчины → проверка текста")
 def test_change_region(page, run):
@@ -44,7 +44,7 @@ def test_change_region(page, run):
 
 
 # Переход на главную и проверка статуса HTTP 200
-@pytest.mark.parametrize("run", range(1))
+@pytest.mark.parametrize("run", range(5))
 @allure.title("HTTP статус главной страницы")
 @allure.description("Проверка доступности главной страницы (HTTP 200)")
 def test_status(page, run):
