@@ -10,6 +10,9 @@ jobs:
   test:
     name: Test
     runs-on: windows-latest
+    permissions:
+      contents: write
+      pages: write
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python 3.x
