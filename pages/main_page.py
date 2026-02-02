@@ -22,7 +22,7 @@ class MainPage:
 
     # Открыть главную страницу
     def open_main_site(self):
-        self.page.goto("https://piter-online.net/")
+        self.page.goto(BASE_URL)
 
     # Заполнить поле улицы
     def fill_street(self, street_name: str):
@@ -34,7 +34,7 @@ class MainPage:
     # Заполнить поле дома
     def fill_house(self, house_number: str):
         self.house_input.fill(house_number)
-        self.house_input.press("Enter")
+        self.house_input.press(ENTER)
         return self
 
     # Заполнить полный адрес
@@ -88,16 +88,8 @@ class MainPage:
         expect(self.gatchina_text).to_be_visible()
         return self
 
-    # Вспомогательные методы
-    def goto(self, url: str = BASE_URL):
-        """Перейти на страницу"""
-        response = self.page.goto(url)
-        self.page.wait_for_load_state("networkidle")
-        return response
-
     # Полное заполнение заявки + переходы по сайту по нажатию по кнопкам.
     def fill_complete_form(self, street: str, house: str, phone: str):
-        """Заполнить полную форму и получить результаты"""
         (self.fill_address(street, house)
          .click_find_tariffs()
          .fill_phone(phone)
