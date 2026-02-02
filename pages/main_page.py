@@ -27,7 +27,7 @@ class MainPage:
     # Заполнить поле улицы
     def fill_street(self, street_name: str):
         self.street_input.click()
-        self.street_input.fill(street_name)
+        self.street_input.fill("Тес")
         self.page.get_by_text("Ленинградская область, Хвойный").click()
         return self
 
